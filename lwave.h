@@ -37,6 +37,30 @@
 
 using namespace std;
 
+template <class T>
+struct IsInt 
+{
+	static const bool value = false;
+};
+
+template <>
+struct IsInt<int> 
+{
+	static const bool value = true;
+};
+
+template <>
+struct IsInt<short> 
+{
+	static const bool value = true;
+};
+
+template <>
+struct IsInt<long> 
+{
+	static const bool value = true;
+};
+
 template <typename T>
 class lwt {
 	vector<T> cA,cD;
@@ -72,14 +96,14 @@ public:
 		if (lft_type == 'd') {
 			
 			for (int len_dl = 0; len_dl < (int) dl.size();len_dl++) {
-				T temp = (T) 0.0;
+				double temp = 0.0;
 				for (int lf=0; lf < len_filt; lf++) {
 					if ((len_dl+max_pow-lf) >= 0 && (len_dl+max_pow-lf) < (int) sl.size()) {
 						temp=temp+filt[lf]*sl[len_dl+max_pow-lf];
 					
 					}
 				}
-				dl[len_dl]=dl[len_dl]-temp;
+				dl[len_dl]=dl[len_dl]-(T) temp;
 				
 			}
 		
@@ -87,14 +111,14 @@ public:
 		} else if (lft_type == 'p') {
 			
 			for (int len_sl = 0; len_sl < (int) dl.size();len_sl++) {
-				T temp = (T) 0.0;
+				double temp = 0.0;
 				for (int lf=0; lf < len_filt; lf++) {
 					if ((len_sl+max_pow-lf) >= 0 && (len_sl+max_pow-lf) < (int) dl.size()) {
 						temp=temp+filt[lf]*dl[len_sl+max_pow-lf];
 					
 					}
 				}
-				sl[len_sl]=sl[len_sl]-temp;
+				sl[len_sl]=sl[len_sl]-(T) temp;
 				
 			}
 			
@@ -102,8 +126,11 @@ public:
 		
 	}
 	double K1 = 1.0/K;
-	vecmult(sl,(T) K1);
-	vecmult(dl,(T) K);
+	if ( !IsInt<T>::value) {
+		vecmult(sl,K1);
+		vecmult(dl,K);
+	}
+
 	cA=sl;
 	cD=dl;
 	cD_length.clear();
@@ -198,8 +225,10 @@ public:
 	//sl=cA;
 	//dl=cD;
 	double K1 = 1.0/K;
-	vecmult(sl,(T) K);
-	vecmult(dl,(T) K1);
+	if ( !IsInt<T>::value) {
+		vecmult(sl,K);
+		vecmult(dl,K1);
+	}
 	
 	int N = lat.size();
 	
@@ -221,28 +250,28 @@ public:
 		if (lft_type == 'd') {
 			
 			for (int len_dl = 0; len_dl < (int) dl.size();len_dl++) {
-				T temp = (T) 0.0;
+				double temp =  0.0;
 				for (int lf=0; lf < len_filt; lf++) {
 					if ((len_dl+max_pow-lf) >= 0 && (len_dl+max_pow-lf) < (int) sl.size()) {
 						temp=temp+filt[lf]*sl[len_dl+max_pow-lf];
 					
 					}
 				}
-				dl[len_dl]=dl[len_dl]+temp;
+				dl[len_dl]=dl[len_dl]+(T) temp;
 				
 			}
 			
 		} else if (lft_type == 'p') {
 			
 			for (int len_sl = 0; len_sl < (int) dl.size();len_sl++) {
-				T temp = (T) 0.0;
+				double temp =  0.0;
 				for (int lf=0; lf < len_filt; lf++) {
 					if ((len_sl+max_pow-lf) >= 0 && (len_sl+max_pow-lf) < (int) dl.size()) {
 						temp=temp+filt[lf]*dl[len_sl+max_pow-lf];
 					
 					}
 				}
-				sl[len_sl]=sl[len_sl]+temp;
+				sl[len_sl]=sl[len_sl]+(T) temp;
 				
 			}
 			

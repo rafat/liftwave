@@ -43,20 +43,22 @@ class liftscheme{
 	string wname;
 	
 public:
-	liftscheme() {
-		ltype="";
-		stages=0;
-		Kconst=1.000;
-		vector<double> lcoeff;
-		vector<int> plen;
-		wname="lazy";
-		
-	}
 	
 	liftscheme(string &name) {
 		wname=name;
 //		vector<double> coeffs;
-		if (name == "haar" || name == "db1" ) {
+        if (name == "lazy" ) {
+            ltype="";
+			stages=0;
+			Kconst=1.0000;
+			
+			//Stage 0
+			
+			
+			int pl[]={};
+			plen.assign (pl,pl + sizeof(pl)/sizeof(int));
+			
+		} else if (name == "haar" || name == "db1" ) {
             ltype="dp";
 			stages=2;
 			Kconst=0.7071;

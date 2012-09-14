@@ -49,10 +49,10 @@ void inline split(vector<T> &sig, vector<T> &even, vector<T> &odd)  {
 }
 
 template <typename T>
-void inline vecmult(vector<T> &sig, T x) {
+void inline vecmult(vector<T> &sig, double x) {
 	
 	for (int i=0; i < (int) sig.size(); i++ ) {
-		sig[i]= (T) x*sig[i];
+		sig[i]= (T) (x*sig[i]);
 	}
 	
 }
