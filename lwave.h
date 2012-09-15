@@ -494,6 +494,58 @@ void getDim(vector<int> &dimvec) {
 int getLevels() {
 	return level;
 }
+
+void getDetails(string align, int slevel, vector<T> &det_vec, vector<int> &det_len) {
+	int J = level;
+	int lev;
+	if (slevel > J) {
+		cout << " Decomposition has only " << J << " levels" << endl;
+		exit(1);
+	} else {
+		lev=J-slevel;
+	}
+	
+	vector<int> sig_vec = coef_lengths;
+	vector<T> A1,B1,C1,D1;
+	A1=cLL;
+	B1=cLH;
+	C1=cHL;
+	D1=cHH;
+	int total=0;
+	
+	if (align == "LH" || align == "lh") {
+		
+		for (int i=0; i < lev; i++) {
+			total=total+sig_vec[2+i*6]*sig_vec[3+i*6];			
+		}
+		det_vec.assign(B1.begin()+total,B1.begin()+total+sig_vec[2+lev*6]*sig_vec[3+lev*6]);
+		det_len.push_back(sig_vec[2+lev*6]);
+		det_len.push_back(sig_vec[3+lev*6]);
+		
+	} else if (align == "HL" || align == "hl") {
+		
+		for (int i=0; i < lev; i++) {
+			total=total+sig_vec[4+i*6]*sig_vec[5+i*6];			
+		}
+		det_vec.assign(C1.begin()+total,C1.begin()+total+sig_vec[4+lev*6]*sig_vec[5+lev*6]);
+		det_len.push_back(sig_vec[4+lev*6]);
+		det_len.push_back(sig_vec[5+lev*6]);
+		
+	} else if (align == "HH" || align == "hh") {
+		
+		for (int i=0; i < lev; i++) {
+			total=total+sig_vec[6+i*6]*sig_vec[7+i*6];			
+		}
+		det_vec.assign(D1.begin()+total,D1.begin()+total+sig_vec[6+lev*6]*sig_vec[7+lev*6]);
+		det_len.push_back(sig_vec[6+lev*6]);
+		det_len.push_back(sig_vec[7+lev*6]);
+		
+	} else {
+		cout << "Accepted filter stages are LH or lh, HL or hl and HH or hh" << endl;
+		exit(1);
+	}
+	
+}	
 	
 	virtual ~lwt2() {
 		
@@ -744,8 +796,8 @@ void getDetails(lwt2<T> &wt, string align, int slevel, vector<T> &det_vec, vecto
 			total=total+sig_vec[2+i*6]*sig_vec[3+i*6];			
 		}
 		det_vec.assign(B1.begin()+total,B1.begin()+total+sig_vec[2+lev*6]*sig_vec[3+lev*6]);
-		det_len.push_back(sig_vec[3+lev*6]);
 		det_len.push_back(sig_vec[2+lev*6]);
+		det_len.push_back(sig_vec[3+lev*6]);
 		
 	} else if (align == "HL" || align == "hl") {
 		
@@ -753,8 +805,8 @@ void getDetails(lwt2<T> &wt, string align, int slevel, vector<T> &det_vec, vecto
 			total=total+sig_vec[4+i*6]*sig_vec[5+i*6];			
 		}
 		det_vec.assign(C1.begin()+total,C1.begin()+total+sig_vec[4+lev*6]*sig_vec[5+lev*6]);
-		det_len.push_back(sig_vec[5+lev*6]);
 		det_len.push_back(sig_vec[4+lev*6]);
+		det_len.push_back(sig_vec[5+lev*6]);
 		
 	} else if (align == "HH" || align == "hh") {
 		
@@ -762,8 +814,8 @@ void getDetails(lwt2<T> &wt, string align, int slevel, vector<T> &det_vec, vecto
 			total=total+sig_vec[6+i*6]*sig_vec[7+i*6];			
 		}
 		det_vec.assign(D1.begin()+total,D1.begin()+total+sig_vec[6+lev*6]*sig_vec[7+lev*6]);
-		det_len.push_back(sig_vec[7+lev*6]);
 		det_len.push_back(sig_vec[6+lev*6]);
+		det_len.push_back(sig_vec[7+lev*6]);
 		
 	} else {
 		cout << "Accepted filter stages are LH or lh, HL or hl and HH or hh" << endl;
