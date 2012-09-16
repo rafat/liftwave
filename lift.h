@@ -190,7 +190,7 @@ public:
 
 	} else if (name == "db7") {
 			// db7 Factorization needs to be checked. Not sure if it is correct.
-		    ltype="dpdpdpdp";
+		    /*ltype="dpdpdpdp";
 			stages=8;
 			Kconst=0.0474802;
 			
@@ -215,6 +215,33 @@ public:
 			lcoeff.insert(lcoeff.begin(),d1,d1+1);
 			
 			int pl[]={1,0,2,0,2,1,2,1,2,0,2,1,2,0,1,0};
+			plen.assign (pl,pl + sizeof(pl)/sizeof(int));*/
+			
+			ltype="dpdpdpdp";
+			stages=8;
+			Kconst=0.299011;
+			
+			//Stage 1,2,3,4,5,6,7,8
+			
+			double d1[]={5.0935};
+			double p1[]={0.0573987,-0.189042};
+			double d2[]={-12.2854,5.95921};
+			double p2[]={0.0291355,-0.0604279};
+			double d3[]={-3.97071,1.56044};
+			double p3[]={0.00330657,-0.0126914};
+			double d4[]={-0.414198,0.0508159};
+			double p4[]={-0.000406214};
+			
+			lcoeff.insert(lcoeff.begin(),p4,p4+1);
+			lcoeff.insert(lcoeff.begin(),d4,d4+2);
+			lcoeff.insert(lcoeff.begin(),p3,p3+2);
+			lcoeff.insert(lcoeff.begin(),d3,d3+2);
+			lcoeff.insert(lcoeff.begin(),p2,p2+2);
+			lcoeff.insert(lcoeff.begin(),d2,d2+2);
+			lcoeff.insert(lcoeff.begin(),p1,p1+2);
+			lcoeff.insert(lcoeff.begin(),d1,d1+1);
+			
+			int pl[]={1,0,2,1,2,-1,2,3,2,-3,2,5,2,-5,1,6};
 			plen.assign (pl,pl + sizeof(pl)/sizeof(int));
 
 	} else if (name == "db8") {
@@ -567,22 +594,22 @@ public:
 			int pl[]={1,0,2,0,2,2,2,-2,2,4,2,-4,1,5};
 			plen.assign (pl,pl + sizeof(pl)/sizeof(int));
 
-	} else if (name == "db7") {
+	} else if (name == "sym7") {
 			// db7 Factorization needs to be checked. Not sure if it is correct.
 		    ltype="dpdpdpdp";
 			stages=8;
-			Kconst=0.0474802;
+			Kconst=2.14238;
 			
 			//Stage 1,2,3,4,5,6,7,8
 			
-			double d1[]={-0.196329};
-			double p1[]={0.189042,-0.622608};
-			double d2[]={0.473542,0.549384};
-			double p2[]={-2.41574,-0.655465};
-			double d3[]={-0.931487,0.366063};
-			double p3[]={-4.03893,1.05229};
-			double d4[]={-2.01533,0.247251};
-			double p4[]={0.496185};
+			double d1[]={0.390551};
+			double p1[]={7.18082,-0.338864};
+			double d2[]={-0.137256,-0.0139115};
+			double p2[]={0.13389,29.6887};
+			double d3[]={-0.00010688,0.128463};
+			double p3[]={2.31081,-7.4252};
+			double d4[]={0.288609,0.0532701};
+			double p4[]={-1.19875};
 			
 			lcoeff.insert(lcoeff.begin(),p4,p4+1);
 			lcoeff.insert(lcoeff.begin(),d4,d4+2);
@@ -593,7 +620,7 @@ public:
 			lcoeff.insert(lcoeff.begin(),p1,p1+2);
 			lcoeff.insert(lcoeff.begin(),d1,d1+1);
 			
-			int pl[]={1,0,2,0,2,1,2,1,2,0,2,1,2,0,1,0};
+			int pl[]={1,0,2,1,2,-1,2,3,2,-3,2,5,2,-5,1,6};
 			plen.assign (pl,pl + sizeof(pl)/sizeof(int));
 
 	} else if (name == "sym8") {

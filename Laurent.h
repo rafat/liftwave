@@ -54,7 +54,7 @@ public:
 	
 	int i=0;
 	
-	while  ( (coef[i] == 0 || abs(coef[i]) < 1e-07) && coef.size() > 1 ) {
+	while  ( (coef[i] == 0 || abs(coef[i]) < 1e-05) && coef.size() > 1 ) {
 		coef.erase(coef.begin());
 		hdeg--;
 		
@@ -68,7 +68,7 @@ public:
 	
 	i=coef.size();
 	
-	while ((coef[i-1] == 0 || abs(coef[i-1]) < 1e-07) && coef.size() > 1 ) {
+	while ((coef[i-1] == 0 || abs(coef[i-1]) < 1e-05) && coef.size() > 1 ) {
 		coef.erase(coef.end()-1);
 		i=coef.size();
 	}
@@ -289,7 +289,7 @@ public:
 	int count = 0;
 	
 	for (int i=0; i < lenA; i++) {
-		if (coefA[i] != 0 && abs(coefA[i]) > 1e-07) {
+		if (coefA[i] != 0 && abs(coefA[i]) > 1e-05) {
 			count++;
 		}
 		
@@ -396,7 +396,7 @@ void nzinv(Laurent &A) {
 	}
 
 	if (lenA == 1) {
-	    if (coefA[0] != 0 || abs(coefA[0]) <= 1e-07) {
+	    if (coefA[0] != 0 || abs(coefA[0]) <= 1e-05) {
 	        mono = true;
 
 	    } else {
@@ -409,7 +409,7 @@ void nzinv(Laurent &A) {
 	if (lenA > 1) {
 	    int j=0;
 	    for (int i=0; i < lenA; i++) {
-	        if (coefA[i] == 0 || abs(coefA[i]) <= 1e-07) {
+	        if (coefA[i] == 0 || abs(coefA[i]) <= 1e-05) {
 	            j++;
 	        }
 
@@ -440,7 +440,7 @@ int monoDeg() {
 	} else {
 		int temp=highest;
 		for (int i=0; i < lenA; i++) {
-			bool val = coefA[i] == 0 || abs(coefA[i]) < 1e-07;
+			bool val = coefA[i] == 0 || abs(coefA[i]) < 1e-05;
 			if (!val) {
 	            mdeg=temp;
 	        }
