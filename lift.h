@@ -55,8 +55,8 @@ public:
 			//Stage 0
 			
 			
-			int pl[]={};
-			plen.assign (pl,pl + sizeof(pl)/sizeof(int));
+			//int pl[]={};
+			//plen.assign (pl,pl + sizeof(pl)/sizeof(int));
 			
 		} else if (name == "haar" || name == "db1" ) {
             ltype="dp";
@@ -709,7 +709,7 @@ void disp() {
 	cout << " K : " << Kconst <<endl;
 }	
 
-void addLift(string &c,vector<double> addcoeff, int mp) {
+void addLift(string &c,vector<double> &addcoeff, int mp) {
 	ltype=ltype+c;
 	stages=ltype.size();
 	
