@@ -499,57 +499,6 @@ void merge(Laurent &X, Laurent &Y) {
 }
       
 
-void LaurentDiv(Laurent &A, Laurent &B, vector<Laurent<T> > &lcont) {
-    int ha=A.highdeg();
-	int hb=B.highdeg();
-
-	int lenA=A.degree()+1;
-	int lenB=B.degree()+1;
-
-	int la=ha-lenA+1;
-	int lb=hb-lenB+1;
-
-	int hc = ha - hb;
-	int lc = la -lb;
-
-	int lenC = lenA - lenB;
-
-
-	vector<T> coefA=A.poly;
-	vector<T> coefB=B.poly;
-	vector<T> coef_q1,coef_q2,coef_r1,coef_r2;
-
-	if (lenC == 0) {
-	    T temp1,temp2;
-	    temp1=coefA[0]/coefB[0];
-	    temp2=coefA[lenA-1]/coefB[lenB-1];
-
-	    coef_q1.push_back(temp1);
-	    coef_q2.push_back(temp2);
-
-	    for (int i=0; i < lenA; i++) {
-	        coef_r1.push_back(coefA[i]- temp1*coefB[i]);
-	        coef_r2.push_back(coefA[i]- temp2*coefB[i]);
-
-	    }
-		Laurent<T> q1,q2,r1,r2;
-		q1.setPoly(coef_q1,ha-hb);
-		q2.setPoly(coef_q2,la-lb);
-		r1.setPoly(coef_r1,ha);
-		r2.setPoly(coef_r2,ha);
-
-		//vector<Laurent<T> > lcont;
-		lcont.push_back(q1);
-		lcont.push_back(r1);
-		lcont.push_back(q2);
-		lcont.push_back(r2);
-
-
-
-	}
-
-    }
-
     virtual ~Laurent(){
     }
 };

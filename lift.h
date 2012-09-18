@@ -720,6 +720,34 @@ void addLift(string &c,vector<double> &addcoeff, int mp) {
 	lcoeff.insert(lcoeff.end(),addcoeff.begin(),addcoeff.end());
 }
 
+void addLift(string &c,vector<double> &addcoeff, int mp, string &pos) {
+	if (pos == "end") {
+		ltype=ltype+c;
+		stages=ltype.size();
+	
+		int len_add=addcoeff.size();
+		plen.push_back(len_add);
+		plen.push_back(mp);
+	
+		lcoeff.insert(lcoeff.end(),addcoeff.begin(),addcoeff.end());
+	} else if (pos == "begin") {
+		ltype=c+ltype;
+		stages=ltype.size();
+		int len_add=addcoeff.size();
+		
+		plen.insert(plen.begin(),mp);
+		plen.insert(plen.begin(),len_add);
+		
+		lcoeff.insert(lcoeff.begin(),addcoeff.begin(),addcoeff.end());
+		
+		
+		
+	} else {
+		cout << " The program accepts only two positions for the new lifting stage - end / begin" << endl;
+	}
+	
+}
+
 virtual ~liftscheme() {
 	
 }	
