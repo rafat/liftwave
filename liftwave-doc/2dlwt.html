@@ -54,7 +54,7 @@ int rows=11;
 int cols=8;
         
 liftscheme blift(name);
-lwt2<double> lift2(sig,rows,cols,blift);
+lwt2&lt;double&gt; lift2(sig,rows,cols,blift);
 	</PRE>
 </div>
 <p>B) J Level Decomposition </p>
@@ -71,7 +71,7 @@ int rows=11;
 int cols=8;
         
 liftscheme blift(name);
-lwt2<double> lift2(sig,rows,cols,blift,J);
+lwt2&lt;double&gt; lift2(sig,rows,cols,blift,J);
 	</PRE>
 </div>
  <h4>Functions Associated With LWT2 Class </h4>
@@ -80,7 +80,7 @@ lwt2<double> lift2(sig,rows,cols,blift,J);
 void    getCoef (vector< T > &aLL, vector< T > &aLH, vector< T > &aHL, vector< T > &aHH)
 void    getDim (vector< int > &dimvec)
 int     getLevels ()
-void    getDetails(string align, int slevel, vector<T> &det_vec,vector<int> &det_len)
+void    getDetails(string align, int slevel, vector<T> &det_vec,vector&lt;int&gt; &det_len)
       	</PRE>
       	</div>
 	
@@ -99,9 +99,9 @@ void    getDetails(string align, int slevel, vector<T> &det_vec,vector<int> &det
 <p>getDetails returns specific component at any requested level. eg., "LH" at level 2 or "HH" at level 1. See the usage example below which is a continuation of B) above. </p>
 <div id="verbatim4">
 	<PRE>
-vector<double> A,B,C,D;
+vector&lt;double&gt; A,B,C,D;
 lift2.getCoef(A,B,C,D);
-vector<int> lengths;
+vector&lt;int&gt; lengths;
 lift2.getDim(lengths);
 cout << A.size() << " " << B.size() << " " << C.size() << " " << D.size() << endl;
 cout << lengths.size() << endl;
@@ -117,8 +117,8 @@ for (int i=0; i < (int) lengths.size(); i++) {
 cout << lift2.getLevels() << endl;
         
 int slevel = 1;
-vector<double> H;
-vector<int> detlenH;
+vector&lt;double&gt; H;
+vector&lt;int&gt; detlenH;
         
 lift2.getDetails("LH",slevel,H,detlenH);
         
@@ -146,7 +146,7 @@ ilwt2 (lwt2< T > &wt, liftscheme &lft)
       	<p>First one is for one level reconstruction while the second one can be used for any level of reconstruction. Example usage which is a continuation of previous example.  </p>
 <div id="verbatim4">
 	<PRE>
-ilwt2<double> ilift2(lift2,blift);
+ilwt2&lt;double&gt; ilift2(lift2,blift);
 	</PRE>
 </div>
 <h4>Functions Associated With ILWT2 Class </h4>
@@ -163,9 +163,9 @@ void    getDim (vector< int > &sigdim)
 
 	<div id="verbatim4">
 	<PRE>
-vector<double> oup;
+vector&lt;double&gt; oup;
 ilift2.getSignal(oup);
-vector<int> oup_dim;
+vector&lt;int&gt; oup_dim;
 ilift2.getDim(oup_dim);
 	</PRE>
 </div>
@@ -188,7 +188,7 @@ int main()
         
         string name="bior3.3";
         int J=2;
-        vector<double> sig;
+        vector&lt;double&gt; sig;
         
         for (int i=0; i < 88;i ++) {
                 sig.push_back((double) (i+1));
@@ -208,11 +208,11 @@ int main()
         }
         
         liftscheme blift(name);
-        lwt2<double> lift2(sig,rows,cols,blift,J);
+        lwt2&lt;double&gt; lift2(sig,rows,cols,blift,J);
         
-        vector<double> A,B,C,D;
+        vector&lt;double&gt; A,B,C,D;
         lift2.getCoef(A,B,C,D);
-        vector<int> lengths;
+        vector&lt;int&gt; lengths;
         lift2.getDim(lengths);
         cout << "Respective Size of All 4 Output vectors (LL,LH,HL,HH) : " ;
         cout << A.size() << " " << B.size() << " " << C.size() << " " << D.size() << endl;
@@ -234,8 +234,8 @@ int main()
         
         
         int slevel = 1;
-        vector<double> H;
-        vector<int> detlenH;
+        vector&lt;double&gt; H;
+        vector&lt;int&gt; detlenH;
         
         lift2.getDetails("LH",slevel,H,detlenH);
         
@@ -252,10 +252,10 @@ int main()
         }
         cout << endl;
         
-        ilwt2<double> ilift2(lift2,blift);
-        vector<double> oup;
+        ilwt2&lt;double&gt; ilift2(lift2,blift);
+        vector&lt;double&gt; oup;
         ilift2.getSignal(oup);
-        vector<int> oup_dim;
+        vector&lt;int&gt; oup_dim;
         ilift2.getDim(oup_dim);
         cout << "Output Dimensions : " << oup_dim[0] << " :: " << oup_dim[1] << endl;
         cout << "OUTPUT : " << endl;

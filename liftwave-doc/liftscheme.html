@@ -70,7 +70,7 @@
 		// Adding a Dual Lifting Stage
 
 		<li>string c="d"; //d corrsponds to dual while p corresponds to primal</li>
-		<li>vector<double> addl;</li>
+		<li>vector&lt;double&gt; addl;</li>
 		<li>addl.push_back(0.500);</li>
 		<li>addl.push_back(-0.125);</li>
 
@@ -105,7 +105,7 @@ liftscheme blift(name);
 // Adding a Dual Lifting Stage
 
 string c="d"; //d corrsponds to dual while p corresponds to primal
-vector<double> addl;
+vector&lt;double&gt; addl;
 addl.push_back(0.500);
 addl.push_back(-0.125);
 
@@ -118,8 +118,8 @@ cout << " Number Of Lifting Stages : " << blift.nlifts() << endl;
 cout << " K Constant : " << blift.K() << endl;
 cout << " Name : " << blift.getName() << endl;
 
-vector<double> coeff;
-vector<int> lenvec;
+vector&lt;double&gt; coeff;
+vector&lt;int&gt; lenvec;
 string lattice;
 double Kc;
 

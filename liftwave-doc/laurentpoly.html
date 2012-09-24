@@ -33,7 +33,7 @@
       	<p>Initialization </p>
       	<div id="hilite3">
       	<PRE>
-Laurent<double> poly1;
+Laurent&lt;double&gt; poly1;
       	</PRE>
       	</div>
 <h4>Associated Functions </h4>
@@ -59,9 +59,9 @@ void    merge (Laurent &X, Laurent &Y)
 <p>setPoly is used to set the values of the Laurent Polynomial. Example usage is </p>   
 <div id="verbatim4">
 	<PRE>
-Laurent<double> poly1;
+Laurent&lt;double&gt; poly1;
 int mp=2;
-vector<double> coeff;
+vector&lt;double&gt; coeff;
 coeff.push_back(1.0);
 coeff.push_back(-0.5);
 poly1.setPoly(coeff,mp);
@@ -77,7 +77,7 @@ poly1.dispPoly();
 <p>getPoly returns the coefficient vector from a Laurent class object. </p>
 <div id="verbatim4">
 	<PRE>
-vector<double> get_coeff;
+vector&lt;double&gt; get_coeff;
 poly1.getPoly(get_coeff);
 	</PRE>
 </div>  	
@@ -90,17 +90,17 @@ poly1.getPoly(get_coeff);
         double re_array[]= {-0.125,0.75,-0.125};
         double re_array2[]= {0.25,0.25};
 
-        vector<double> a(re_array, re_array + sizeof(re_array)/sizeof(double));
-        vector<double> b(re_array2, re_array2 + sizeof(re_array2)/sizeof(double));
+        vector&lt;double&gt; a(re_array, re_array + sizeof(re_array)/sizeof(double));
+        vector&lt;double&gt; b(re_array2, re_array2 + sizeof(re_array2)/sizeof(double));
 
         int low=1;
         int low2=1;
-        Laurent<double> lp1,lp2,lp3,lp4,lp5,lp6;
+        Laurent&lt;double&gt; lp1,lp2,lp3,lp4,lp5,lp6;
         lp1.setPoly(a,low);
         lp2.setPoly(b,low2);
         cout << lp1.degree()+1 << " " << lp2.degree()+1 << endl; // prints Laurent Test
 
-        vector<double> newvec;
+        vector&lt;double&gt; newvec;
         lp1.getPoly(newvec);
         cout << newvec.size() << endl;
 
@@ -147,7 +147,7 @@ void Div(Laurent<T> &A, Laurent<T> &B, vector<Laurent<T> > &lcont)
 
 <div id="verbatim4">
 	<PRE>
-    vector<Laurent<double> > lout;
+    vector<Laurent&lt;double&gt; > lout;
     Div(lp1,lp2,lout);
 
     for (unsigned int i=0; i < lout.size()/2; i++) {
@@ -205,9 +205,9 @@ using namespace std;
 int main()
 {
         string name="db2";
-        Laurent<double> lpd,hpd,lpr,hpr;
+        Laurent&lt;double&gt; lpd,hpd,lpr,hpr;
         lpoly(name,lpd,hpd,lpr,hpr);
-        Laurent<double> leven,lodd;
+        Laurent&lt;double&gt; leven,lodd;
         EvenOdd(lpr,leven,lodd);
         cout << "Polynomial 1 : ";
         lpr.dispPoly();
@@ -216,7 +216,7 @@ int main()
         cout << "Polynomial 1 Odd Component : ";
         lodd.dispPoly();
         
-        Laurent<double> out;
+        Laurent&lt;double&gt; out;
         out.merge(leven,lodd);
         cout << "Merging Even and Odd Components : ";
         out.dispPoly();
@@ -256,18 +256,18 @@ int main() {
     double re_array[]= {-0.125,0.75,-0.125};
         double re_array2[]= {0.25,0.25};
 
-        vector<double> a(re_array, re_array + sizeof(re_array)/sizeof(double));
-        vector<double> b(re_array2, re_array2 + sizeof(re_array2)/sizeof(double));
+        vector&lt;double&gt; a(re_array, re_array + sizeof(re_array)/sizeof(double));
+        vector&lt;double&gt; b(re_array2, re_array2 + sizeof(re_array2)/sizeof(double));
 //      int low=-2;
 //      int low2=2;
     int low=1;
         int low2=1;
-        Laurent<double> lp1,lp2,lp3,lp4,lp5,lp6;
+        Laurent&lt;double&gt; lp1,lp2,lp3,lp4,lp5,lp6;
         lp1.setPoly(a,low);
         lp2.setPoly(b,low2);
         cout << lp1.degree()+1 << " " << lp2.degree()+1 << endl; // prints Laurent Test
 
-    vector<double> newvec;
+    vector&lt;double&gt; newvec;
     lp1.getPoly(newvec);
     cout << newvec.size() << endl;
 
@@ -292,15 +292,15 @@ int main() {
 
     //cout << lp5.isMono() << endl;
 
-    LaurentMat<double> Mat1;
+    LaurentMat&lt;double&gt; Mat1;
     Mat1.setMat(lp1,lp1,lp2,lp2);
-    Laurent<double> det1;
+    Laurent&lt;double&gt; det1;
     Mat1.Det(det1);
     cout << "Determinant : ";
     det1.dispPoly();
 
     cout << "Mono : " << det1.isMono() << endl;
-        vector<Laurent<double> > lout;
+        vector<Laurent&lt;double&gt; > lout;
     Div(lp1,lp2,lout);
 
     for (unsigned int i=0; i < lout.size()/2; i++) {

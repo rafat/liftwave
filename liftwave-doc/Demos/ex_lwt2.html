@@ -18,7 +18,7 @@ int main()
         
         string name="bior3.3";
         int J=2;
-        vector<double> sig;
+        vector&lt;double&gt; sig;
         
         for (int i=0; i < 88;i ++) {
                 sig.push_back((double) (i+1));
@@ -38,11 +38,11 @@ int main()
         }
         
         liftscheme blift(name);
-        lwt2<double> lift2(sig,rows,cols,blift,J);
+        lwt2&lt;double&gt; lift2(sig,rows,cols,blift,J);
         
-        vector<double> A,B,C,D;
+        vector&lt;double&gt; A,B,C,D;
         lift2.getCoef(A,B,C,D);
-        vector<int> lengths;
+        vector&lt;int&gt; lengths;
         lift2.getDim(lengths);
         cout << "Respective Size of All 4 Output vectors (LL,LH,HL,HH) : " ;
         cout << A.size() << " " << B.size() << " " << C.size() << " " << D.size() << endl;
@@ -64,8 +64,8 @@ int main()
         
         
         int slevel = 1;
-        vector<double> H;
-        vector<int> detlenH;
+        vector&lt;double&gt; H;
+        vector&lt;int&gt; detlenH;
         
         lift2.getDetails("LH",slevel,H,detlenH);
         
@@ -82,10 +82,10 @@ int main()
         }
         cout << endl;
         
-        ilwt2<double> ilift2(lift2,blift);
-        vector<double> oup;
+        ilwt2&lt;double&gt; ilift2(lift2,blift);
+        vector&lt;double&gt; oup;
         ilift2.getSignal(oup);
-        vector<int> oup_dim;
+        vector&lt;int&gt; oup_dim;
         ilift2.getDim(oup_dim);
         cout << "Output Dimensions : " << oup_dim[0] << " :: " << oup_dim[1] << endl;
         cout << "OUTPUT : " << endl;

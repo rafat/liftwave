@@ -49,10 +49,10 @@ Usage Examples are as following. </p>
 string name="bior2.2";
 double lp1_a[] = {0.9501,0.2311,0.6068,0.4860,0.8913,0.7621,0.4565,0.0185,0.8214,
         0.4447,0.6154,0.7919,0.9218,0.7382,0.1763,0.4057};
-vector<double> sig;
+vector&lt;double&gt; sig;
 sig.assign(lp1_a,lp1_a + sizeof(lp1_a)/sizeof(double));
 
-lwt<double> dlift(sig,name);
+lwt&lt;double&gt; dlift(sig,name);
 	</PRE>
 </div>
 <p>B.) One Level Decomposition using Lifting Scheme.  </p>
@@ -61,12 +61,12 @@ lwt<double> dlift(sig,name);
 string name="db3";
 double lp1_a[] = {0.9501,0.2311,0.6068,0.4860,0.8913,0.7621,0.4565,0.0185,0.8214,
         0.4447,0.6154,0.7919,0.9218,0.7382,0.1763,0.4057};
-vector<double> sig;
+vector&lt;double&gt; sig;
 sig.assign(lp1_a,lp1_a + sizeof(lp1_a)/sizeof(double));
 
 liftscheme blift(name);
 string c="d";
-vector<double> addl;
+vector&lt;double&gt; addl;
 addl.push_back(0.500);
 addl.push_back(-0.125);
 
@@ -74,7 +74,7 @@ int mp=0;
 blift.addLift(c,addl,mp);
 blift.disp();
 
-lwt<double> dlift(sig,blift);
+lwt&lt;double&gt; dlift(sig,blift);
 	</PRE>
 </div>
 <p>There are intermediate steps in this program which add a dual stage to the defined lifting scheme but the important steps are (i) defining a lifting scheme blift and (ii) using the so defined lifting scheme to find the single Level Lifting transform. </p>
@@ -85,10 +85,10 @@ string name="bior2.2";
 int J=2;
 double lp1_a[] = {0.9501,0.2311,0.6068,0.4860,0.8913,0.7621,0.4565,0.0185,0.8214,
         0.4447,0.6154,0.7919,0.9218,0.7382,0.1763,0.4057};
-vector<double> sig;
+vector&lt;double&gt; sig;
 sig.assign(lp1_a,lp1_a + sizeof(lp1_a)/sizeof(double));
 
-lwt<double> dlift(sig,name,J);
+lwt&lt;double&gt; dlift(sig,name,J);
 	</PRE>
 </div>
 
@@ -99,12 +99,12 @@ string name="db3";
 int J=2;
 double lp1_a[] = {0.9501,0.2311,0.6068,0.4860,0.8913,0.7621,0.4565,0.0185,0.8214,
         0.4447,0.6154,0.7919,0.9218,0.7382,0.1763,0.4057};
-vector<double> sig;
+vector&lt;double&gt; sig;
 sig.assign(lp1_a,lp1_a + sizeof(lp1_a)/sizeof(double));
 
 liftscheme blift(name);
 string c="d";
-vector<double> addl;
+vector&lt;double&gt; addl;
 addl.push_back(0.500);
 addl.push_back(-0.125);
 
@@ -112,7 +112,7 @@ int mp=0;
 blift.addLift(c,addl,mp);
 blift.disp();
 
-lwt<double> dlift(sig,blift,J);
+lwt&lt;double&gt; dlift(sig,blift,J);
 	</PRE>
 </div>
 
@@ -130,9 +130,9 @@ int     getLevels ()
 
 <div id="verbatim4">
 	<PRE>
-lwt<double> dlift(sig,blift,J);
-vector<double> a,d;
-vector<int> lengths;
+lwt&lt;double&gt; dlift(sig,blift,J);
+vector&lt;double&gt; a,d;
+vector&lt;int&gt; lengths;
 dlift.getCoeff(a,d);
 dlift.getDetailVec(lengths);
 cout << " Approximation : " << endl;
@@ -188,7 +188,7 @@ Example Usage </p>
 <p>A. One Level Lifting Reconstruction with string Name. See A) in LWT class above. </p>
 <div id="verbatim4">
 	<PRE>
-vector<double> a,d;
+vector&lt;double&gt; a,d;
 dlift.getCoeff(a,d);
 ilwt(a,d,name);
 	</PRE>
@@ -196,7 +196,7 @@ ilwt(a,d,name);
 <p>B.) One Level Reconstruction using Lifting Scheme. See B) in lwt class above </p>
 <div id="verbatim4">
 	<PRE>
-vector<double> a,d;
+vector&lt;double&gt; a,d;
 dlift.getCoeff(a,d);
 ilwt(a,d,blift);
 	</PRE>
@@ -204,14 +204,14 @@ ilwt(a,d,blift);
 <p>C.) J Level Reconstruction using wavelet name. In this case, instead of using coefficients as input we use the lwt class as the input to the ilwt class. This method is more user friendly and compact. </p>
 <div id="verbatim4">
 	<PRE>
-ilwt<double> idlift(dlift,name);
+ilwt&lt;double&gt; idlift(dlift,name);
 	</PRE>
 </div>
 
 <p>D.) J Level Reconstruction using lifting scheme. In this case, instead of using coefficients as input we use the lwt class as the input to the ilwt class. This method is more user friendly and compact. </p>
 <div id="verbatim4">
 	<PRE>
-ilwt<double> idlift(dlift,blift);
+ilwt&lt;double&gt; idlift(dlift,blift);
 	</PRE>
 </div>
 
@@ -228,8 +228,8 @@ void    getSignal (vector< T > &sig)
 
 <div id="verbatim4">
 	<PRE>
-ilwt<double> idlift(dlift,blift);
-vector<double> oup;
+ilwt&lt;double&gt; idlift(dlift,blift);
+vector&lt;double&gt; oup;
 idlift.getSignal(oup);
 
 cout << " Reconstructed : " << endl;
@@ -271,12 +271,12 @@ double lp1_a[] = {0.9501,0.2311,0.6068,0.4860,0.8913,0.7621,0.4565,0.0185,0.8214
 0.4447,0.6154,0.7919,0.9218,0.7382,0.1763,0.4057};
 /*double lp1_a[] = {1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,1.000,
 1.000,1.000,1.000,1.000,1.000,1.000,1.000};*/
-vector<double> sig;
+vector&lt;double&gt; sig;
     sig.assign(lp1_a,lp1_a + sizeof(lp1_a)/sizeof(double));
 
 liftscheme blift(name);
 string c="d";
-vector<double> addl;
+vector&lt;double&gt; addl;
 addl.push_back(0.500);
 addl.push_back(-0.125);
 
@@ -284,9 +284,9 @@ int mp=0;
 blift.addLift(c,addl,mp);
 blift.disp();
 
-lwt<double> dlift(sig,blift,J);
-vector<double> a,d;
-vector<int> lengths;
+lwt&lt;double&gt; dlift(sig,blift,J);
+vector&lt;double&gt; a,d;
+vector&lt;int&gt; lengths;
 dlift.getCoeff(a,d);
 dlift.getDetailVec(lengths);
 cout << " Approximation : " << endl;
@@ -308,8 +308,8 @@ cout << lengths[i] << " ";
 cout << endl;
 
 
-ilwt<double> idlift(dlift,blift);
-vector<double> oup;
+ilwt&lt;double&gt; idlift(dlift,blift);
+vector&lt;double&gt; oup;
 idlift.getSignal(oup);
 
 cout << " Reconstructed : " << endl;

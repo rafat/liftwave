@@ -33,7 +33,7 @@
       	<p>Initialization </p>
       	<div id="hilite3">
       	<PRE>
-LaurentMat<double> matrix;
+LaurentMat&lt;double&gt; matrix;
       	</PRE>
       	</div>
 <h4>Associated Functions </h4>
@@ -56,10 +56,10 @@ void    getLpoly (Laurent< T > &P, int N)
 
 <div id="verbatim4">
 	<PRE>
-        Laurent<double> lpd,hpd,lpr,hpr;
+        Laurent&lt;double&gt; lpd,hpd,lpr,hpr;
         lpoly(name,lpd,hpd,lpr,hpr);
         
-        LaurentMat<double> matrix;
+        LaurentMat&lt;double&gt; matrix;
         
         matrix.setMat(lpd,lpr,hpd,hpr);
 	</PRE>
@@ -67,7 +67,7 @@ void    getLpoly (Laurent< T > &P, int N)
 <p>Det finds the determinant of the matrix while you can use dispMat() to display the matrix. </p>
 <div id="verbatim4">
 	<PRE>
-        Laurent<double> determinant;
+        Laurent&lt;double&gt; determinant;
         matrix.Det(determinant);
         
         cout << "The Matrix : " << endl;
@@ -99,7 +99,7 @@ z^(-1)-1.38778e-017*z^(-2)+0.375*z^(-3)+0*z^(-4)-0.03125*z^(-5)
 
 <div id="verbatim4">
 	<PRE>
-        LaurentMat<double> T1,S1;
+        LaurentMat&lt;double&gt; T1,S1;
         T1.TZ(lpd);
         S1.SZ(hpd);
         cout << "T(Z) matrix : " << endl;
@@ -136,7 +136,7 @@ S(Z) matrix :
         cout << "T(Z) matrix Scaled by 2.2 : " << endl;
         T1.dispMat();
         
-        LaurentMat<double> IS;
+        LaurentMat&lt;double&gt; IS;
         
         S1.MatInv(IS);
         cout << "Inverse of S(Z) matrix  : " << endl;
@@ -171,7 +171,7 @@ Press any key to continue.
 
 <div id="verbatim4">
 	<PRE>
-        LaurentMat<double> addm,subm,multm;
+        LaurentMat&lt;double&gt; addm,subm,multm;
         
         addm.MatAdd(T1,S1);
         subm.MatSub(T1,S1);
@@ -243,13 +243,13 @@ using namespace std;
 int main()
 {
         string name="bior2.2";
-        Laurent<double> lpd,hpd,lpr,hpr;
+        Laurent&lt;double&gt; lpd,hpd,lpr,hpr;
         lpoly(name,lpd,hpd,lpr,hpr);
         
-        LaurentMat<double> matrix;
+        LaurentMat&lt;double&gt; matrix;
         
         matrix.setMat(lpd,lpr,hpd,hpr);
-        Laurent<double> determinant;
+        Laurent&lt;double&gt; determinant;
         matrix.Det(determinant);
         
         cout << "The Matrix : " << endl;
@@ -258,7 +258,7 @@ int main()
         cout << " The Determinant : ";
         determinant.dispPoly();
         
-        LaurentMat<double> T1,S1;
+        LaurentMat&lt;double&gt; T1,S1;
         T1.TZ(lpd);
         S1.SZ(hpd);
         cout << "T(Z) matrix : " << endl;
@@ -270,13 +270,13 @@ int main()
         cout << "T(Z) matrix Scaled by 2.2 : " << endl;
         T1.dispMat();
         
-        LaurentMat<double> IS;
+        LaurentMat&lt;double&gt; IS;
         
         S1.MatInv(IS);
         cout << "Inverse of S(Z) matrix  : " << endl;
         IS.dispMat();
         
-        LaurentMat<double> addm,subm,multm;
+        LaurentMat&lt;double&gt; addm,subm,multm;
         
         addm.MatAdd(T1,S1);
         subm.MatSub(T1,S1);
